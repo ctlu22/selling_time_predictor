@@ -38,7 +38,6 @@ class TruliaSoldFeatures:
         '''
         helper function for write_trulia_sold_temp_features
         returns a list of temp features for each row of 'dfin'
-
         '''
         
         tempsoldfeatures = []
@@ -75,9 +74,7 @@ class TruliaSoldFeatures:
     def get_price(self, askingprice):
 
         '''
-
         helper function for clean_sold_trulia
-
         '''
         if askingprice == np.nan or type(askingprice) == float:
             return np.nan
@@ -95,7 +92,6 @@ class TruliaSoldFeatures:
 
     '''
     helper function for clean_sold_trulia
-
     '''
         if len(overview) == 0:
             return np.nan
@@ -138,7 +134,6 @@ class TruliaSoldFeatures:
         '''
         get rid of the Trulia prefix for part of the description
         in sold condos
-
         '''
         if (np.isnan(description) or len(description) == 0):
             return np.nan
@@ -167,7 +162,6 @@ class TruliaSoldFeatures:
         returns the 'pending' date as the end date if possible;
         otherwise returns the 'sold' or 'listing removed' date 
         as the end date (whichever comes first)
-
         '''
         cleaned_history = []
         pattern = re.compile(r'(\d+/\d+/\d+)')
@@ -226,7 +220,6 @@ class TruliaSoldFeatures:
     for all rows in 'incsvfile', create a list of temporary features 
     and write them to a temp csv
     returns the name of the temp csv file
-
     '''
         temp_outcsvfile = '/Users/chuntinglu/  \
              Desktop/datatest/sold_temp_features_'+zipcode+'.csv'
@@ -253,7 +246,6 @@ class TruliaSoldFeatures:
 
     '''
     helper function for write_trulia_sold_features
-
     '''
         if len(time) == 10:    
             return datetime.strptime(time, '%m/%d/%Y') 
@@ -268,7 +260,6 @@ class TruliaSoldFeatures:
     def get_duration(self, row):
     '''
     helper function for write_trulia_sold_features
-
     '''
         return (row['ending'] - row['starting']).days
     
@@ -278,7 +269,6 @@ class TruliaSoldFeatures:
     '''
     create a dataframe with cleaned features
     and write it to 'outcsvfile'
-
     '''
         
         
