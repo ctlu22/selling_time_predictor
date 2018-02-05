@@ -1,3 +1,15 @@
+import pandas as pd
+import numpy as np
+import re
+import datetime
+import csv
+import spacy
+import textacy
+import en_core_web_sm
+
+
+
+
 class FeatureExtracter:
     """
     This class takes the basic features generated in the "webscraping and basic features"
