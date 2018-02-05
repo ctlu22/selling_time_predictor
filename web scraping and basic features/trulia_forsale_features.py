@@ -15,9 +15,11 @@ class TruliaForSaleFeatures:
     
     def __init__(self, zipcode):
         self.zipcode = zipcode
-        incsvfile = '/Users/chuntinglu/Desktop/datatest/details_forsale_'+zipcode+'.csv'
+        incsvfile = '/Users/chuntinglu/Desktop/datatest/details_forsale_'
+                      +zipcode+'.csv'
         self.dfin = pd.read_csv(incsvfile)
-        self.temp_columns = ['url', 'overview', 'askingprice', 'description','sqft_t','avg_sqft_t', 'zipcode', 'duration']
+        self.temp_columns = ['url', 'overview', 'askingprice', 
+                 'description','sqft_t','avg_sqft_t', 'zipcode', 'duration']
         self.temp_dfout = pd.DataFrame(columns = self.temp_columns)
         
         
@@ -164,7 +166,8 @@ class TruliaForSaleFeatures:
         forsalecopy['weeks'] = forsalecopy.weeks.apply(int)
         forsalecopy['sold'] = False
         
-        outcsvfile = '/Users/chuntinglu/Desktop/datatest/forsale_features_'+zipcode+'.csv'
+        outcsvfile = '/Users/chuntinglu/Desktop/datatest \
+                         /forsale_features_'+zipcode+'.csv'
         forsalecopy.to_csv(outcsvfile, encoding = 'utf-8', index = None)
         
         
