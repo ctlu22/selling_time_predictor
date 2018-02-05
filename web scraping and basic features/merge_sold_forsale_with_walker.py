@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 
 class MergeSoldForSaleWithWalker:
     '''
-    Merge all properties (sold and for sale) together with walkscore
+    Merge sold and for sale condos together with walkscore
     '''
     
     def __init__(self, zipcode):
