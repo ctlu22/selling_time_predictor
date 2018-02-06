@@ -116,8 +116,8 @@ class FeatureExtracter:
         self.create_sold_words()
         self.create_sale_words()
         
-        outcsvfile = '/Users/chuntinglu/Desktop/datatest/all_merged_3_' 
-                     + self.zipcode + '.csv'
+        outcsvfile = '/Users/chuntinglu/Desktop/datatest/zips_merged_3.csv' 
+                     
         
         self.df.to_csv(outcsvfile, encoding = 'utf-8', index = None)
         
