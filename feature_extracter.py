@@ -35,16 +35,16 @@ class FeatureExtracter:
     
     
     def get_newer_buildings(self, row):
-    '''
-    returns if a building is less than 10 years old
-    '''
+       """
+       returns if a building is less than 10 years old
+       """
         if np.isnan(row.year_till_now):
             return np.nan
         else:
             return (row.year_till_now < 10)
     
     def drop_long_weeks(self):
-        self.df['long_weeks'] = self.weeks.apply(lambda x: x>= 110)
+        self.df['long_weeks'] = self.df.weeks.apply(lambda x: x>= 110)
         self.df = self.df.drop(['long_weeks'], axis = 1)
         
     def revise_description(self,row):
@@ -77,7 +77,7 @@ class FeatureExtracter:
         return terms
      
     def get_descriptionlist(self):
-        self.df['description_list'] = self.df.apply(create_descriptionlist, axis = 1)
+        self.df['description_list'] = self.df.apply(self.create_descriptionlist, axis = 1)
         
     
     
@@ -106,9 +106,9 @@ class FeatureExtracter:
     
     def write_csv(self):
         
-        '''
+        """
         replace the outcsvfile with your local directory
-        '''
+        """
         self.drop_long_weeks()
         self.df['newer_buildings'] = self.df.apply(self.get_newer_buildings, axis = 1)
         self.get_revised_description()
@@ -124,12 +124,12 @@ class FeatureExtracter:
     
 if __name__ == '__main__':
     
-    '''
+    """
     replace the incsvfile with your local directory which 
     stores the zips_merged_2.csv provided in the repository
-    '''
+    """
     incsvfile = '/Users/chuntinglu/Desktop/datatest/zips_merged_2_' + zipcode +'.csv'
-    featureextracter = FeatureExtracter()
+    featureextracter = FeatureExtracter(incsvfile)
     featureextracter.write_csv()
         
         
